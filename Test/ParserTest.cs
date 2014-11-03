@@ -97,6 +97,23 @@ namespace OrangeTentacle.FixedWidth.Test
             }
         }
 
+        public class Complex
+        {
+            [Fact]
+            public void Parses_Complex()
+            {
+                var line = "This.     " + // String
+                           "0000000032" + // Int
+                           "      3212"; // Dec
+
+                var record = FixedWidthParser.Parse<ComplexRecord>(line);
+
+                Assert.Equal("This.", record.StringColumn);
+                Assert.Equal(32, record.IntColumn);
+                Assert.Equal(32.12m, record.DecColumn);
+            }
+        }
+
         [Fact]
         public void Returns_Type()
         {
