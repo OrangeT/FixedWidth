@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>OrangeTentacle.FixedWidth</id>
+    <version>$version$</version>
+    <title>Fixed Width Record Tools</title>
+    <authors>Orange Tentacle, Kian Ryan</authors>
+    <owners>Kian Ryan</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/OrangeT/FixedWidth</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FixedWidthParser.Parse parses a fixed width record and populates properties on a 
+target object decorated with the FixedWidthColumnAttribute.  Attempts are made to 
+convert to target types.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright &#x00A9; Orange Tentacle.</copyright>
+    <tags>fixedwidth records finance bacs</tags>
+  </metadata>
+  <files>
+	<file src="FixedWidth\bin\$configuration$\FixedWidth.dll" target="lib\net35\" />
+  </files>
+</package>
