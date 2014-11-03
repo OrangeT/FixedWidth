@@ -8,6 +8,22 @@ License
 
 Released under a MIT license - http://www.opensource.org/licenses/mit-license.php 
 
+Installation
+------------
+
+Latest version is built on MyGet from the latest branch here:
+
+```
+https://www.myget.org/feed/orangetentacle/package/OrangeTentacle.FixedWidth
+```
+
+A "stable" version is publically accessible on nuget:
+
+```
+Install-Package OrangeTentacle.FixedWidth
+```
+
+
 FixedWidthParser.Parse
 ----------------------
 
