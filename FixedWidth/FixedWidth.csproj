@@ -7,8 +7,8 @@
     <ProjectGuid>{37210B88-DB99-4191-9B26-A95C554D086F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OrangeTentacle.FixedWidthParser</RootNamespace>
-    <AssemblyName>FixedWidthParser</AssemblyName>
+    <RootNamespace>OrangeTentacle.FixedWidth</RootNamespace>
+    <AssemblyName>FixedWidth</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="FixedWidthColumn.cs" />
+    <Compile Include="FixedWidthException.cs" />
+    <Compile Include="FixedWidthParser.cs" />
+    <Compile Include="FixedWidthSizeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
