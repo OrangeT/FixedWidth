@@ -37,6 +37,8 @@ Decorate properties in target class with FixedWidthColumn.  Set the start and
 end values to the subset of the record this property applies to.  If delimited 
 by a decimal point, set DecimalPoint to the number of places from the end.
 
+FixedWidthColumn may also be used with [MetadataType](http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.metadatatypeattribute(v=vs.110).aspx) classes.
+
 ```csharp
 public class ComplexRecord
 {
