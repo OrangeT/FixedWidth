@@ -114,6 +114,19 @@ namespace OrangeTentacle.FixedWidth.Test
             }
         }
 
+        public class MetaData
+        {
+            [Fact]
+            public void Finds_Attribute_In_Metadata()
+            {
+                var line = "This     .";
+
+                var record = FixedWidthParser.Parse<MetadataRecord>(line);
+
+                Assert.Equal(line, record.StringColumn);
+            }
+        }
+
         [Fact]
         public void Returns_Type()
         {

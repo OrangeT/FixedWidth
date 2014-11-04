@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
 
@@ -23,11 +25,29 @@ namespace OrangeTentacle.FixedWidth
             if (line == null)
                 throw new ArgumentNullException("line", "Line can not be null");
 
+            // Handle MetaDataType
+            var metaDataAttribute = (typeof (T))
+                .GetCustomAttributes(typeof (MetadataTypeAttribute), false)
+                .FirstOrDefault() as MetadataTypeAttribute;
+
             // Find decorated properties.
-            var props = typeof (T).GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(p => p.GetCustomAttributes(
-                    typeof (FixedWidthColumnAttribute), false).Count() == 1)
-                .ToList();
+            var flags = BindingFlags.Public | BindingFlags.Instance;
+            PropertyInfo[] props;
+            bool isSource;
+
+            if (metaDataAttribute == null)
+            {
+                props = typeof (T).GetProperties(flags);
+                isSource = true;
+            }
+            else
+            {
+                props = metaDataAttribute.MetadataClassType.GetProperties(flags);
+                isSource = false;
+            }
+
+            props = props.Where(p => p.GetCustomAttributes(
+                typeof (FixedWidthColumnAttribute), false).Count() == 1).ToArray();
 
             // Return the last known end point.
             var max = props.Any()
@@ -60,7 +80,16 @@ namespace OrangeTentacle.FixedWidth
                     .ConvertFromString(rawValue.Trim());
 
                 // Set value.
-                prop.SetValue(returnVal, value, null);
+                if (isSource)
+                {
+                    prop.SetValue(returnVal, value, null);                    
+                }
+                else
+                {
+                    var targetProp = (typeof (T)).GetProperty(prop.Name);
+                    targetProp.SetValue(returnVal, value, null);
+                }
+
             }
 
             return returnVal;
